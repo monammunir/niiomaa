@@ -6,14 +6,22 @@ import { LandingContent } from "@/content/landing-content";
 
 interface HeroContentProps {
   content: LandingContent;
+  onEnter?: () => void;
 }
 
-export const HeroContent: React.FC<HeroContentProps> = ({ content }) => {
+export const HeroContent: React.FC<HeroContentProps> = ({ content, onEnter }) => {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
     setClicked(true);
-    setTimeout(() => setClicked(false), 1500);
+    if (onEnter) {
+      setTimeout(() => {
+        onEnter();
+        setClicked(false);
+      }, 400);
+    } else {
+      setTimeout(() => setClicked(false), 1500);
+    }
   };
 
   return (

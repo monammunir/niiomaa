@@ -10,9 +10,10 @@ import { SignInModal } from "./SignInModal";
 
 interface NavbarProps {
   content: LandingContent;
+  onEnterWebsite?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ content }) => {
+export const Navbar: React.FC<NavbarProps> = ({ content, onEnterWebsite }) => {
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -29,11 +30,12 @@ export const Navbar: React.FC<NavbarProps> = ({ content }) => {
     <>
       <header className="fixed top-0 left-0 right-0 z-40 flex justify-center items-center px-4 sm:px-6 pt-4 sm:pt-6 pointer-events-none">
         <nav
-          className="pointer-events-auto w-full max-w-[1432px] h-[72px] sm:h-[80px] rounded-full px-5 sm:px-10 flex items-center justify-between border-2 border-white/[0.12] shadow-[0_8px_32px_rgba(112,47,160,0.25)] transition-all"
+          className="pointer-events-auto w-full max-w-[1432px] h-[72px] sm:h-[80px] rounded-[100px] px-6 sm:px-12 flex items-center justify-between border-2 border-white/[0.12] transition-all"
           style={{
             background: "rgba(149, 8, 188, 0.45)",
             backdropFilter: "blur(16px)",
             WebkitBackdropFilter: "blur(16px)",
+            boxShadow: "0 8px 32px rgba(112, 47, 160, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.08)",
           }}
         >
           {/* 1. Left Logo */}
@@ -42,7 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({ content }) => {
           </div>
 
           {/* 2. Center Nav Items (Desktop) */}
-          <div className="hidden xl:flex items-center gap-1 sm:gap-2">
+          <div className="hidden xl:flex items-center gap-2">
             {content.navigation.items.map((item, idx) => {
               const isItemActive = item.isActive;
               const isMenuOpen = activeDropdown === idx;
@@ -55,9 +57,9 @@ export const Navbar: React.FC<NavbarProps> = ({ content }) => {
                         toggleDropdown(idx);
                       }
                     }}
-                    className={`flex items-center gap-1.5 px-4 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 select-none ${
+                    className={`flex items-center gap-2 h-[48px] px-4 rounded-[48px] text-[16px] font-semibold transition-all select-none ${
                       isItemActive
-                        ? "bg-[#702FA0]/40 text-white border border-white/10 shadow-sm"
+                        ? "bg-[#702FA0]/40 text-white border border-white/10 backdrop-blur-[2px] shadow-sm"
                         : "text-white/90 hover:text-white hover:bg-white/10"
                     }`}
                   >
@@ -86,11 +88,11 @@ export const Navbar: React.FC<NavbarProps> = ({ content }) => {
           </div>
 
           {/* 3. Right Action Items */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-3">
             {/* Sign In Button */}
             <button
               onClick={() => setIsSignInOpen(true)}
-              className="px-5 py-2 sm:py-2.5 rounded-full text-sm font-semibold text-white border border-white/15 bg-[#702FA0]/10 hover:bg-[#702FA0]/30 transition-all select-none shadow-sm"
+              className="h-[48px] w-[96px] flex items-center justify-center rounded-[48px] text-[16px] font-semibold text-white border border-white/15 bg-[rgba(112,47,160,0.15)] hover:bg-[rgba(112,47,160,0.35)] backdrop-blur-[2px] transition-all select-none shadow-sm"
             >
               {content.navigation.signIn.label}
             </button>
@@ -99,9 +101,9 @@ export const Navbar: React.FC<NavbarProps> = ({ content }) => {
             <div className="relative hidden md:block">
               <button
                 onClick={() => setIsLangOpen(!isLangOpen)}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs sm:text-sm font-medium text-white/90 hover:text-white hover:bg-white/10 transition select-none"
+                className="flex items-center gap-2 h-[40px] px-3.5 rounded-[8px] text-[14px] font-semibold text-white hover:bg-white/10 backdrop-blur-[2px] transition select-none"
               >
-                <Globe className="w-4 h-4 text-white/80" />
+                <Globe className="w-4 h-4 text-white/90" />
                 <span>{selectedLang}</span>
               </button>
 

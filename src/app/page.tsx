@@ -1,34 +1,66 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { defaultLandingContent } from "@/content/landing-content";
 import { HeroArc } from "@/components/HeroArc";
 import { Navbar } from "@/components/Navbar";
 import { NiiomaWordmark } from "@/components/NiiomaWordmark";
 import { HeroContent } from "@/components/HeroContent";
+import { HorizontalExperience } from "@/components/HorizontalExperience";
+import { preloadEarthModel } from "@/components/EarthGlobe";
 
 export default function Home() {
-  // Headless CMS content layer (Plasmic / Contentful / Custom CMS ready)
   const content = defaultLandingContent;
+  const [isEntered, setIsEntered] = useState(false);
+
+  // Preload 3D Earth model in the background immediately
+  useEffect(() => {
+    preloadEarthModel().catch(() => {});
+  }, []);
 
   return (
-    <main className="relative w-full min-h-screen bg-[#00142C] overflow-x-hidden flex flex-col justify-between">
-      {/* 1. Background Arc (Exact Figma Glowing Blue Arc) */}
-      <HeroArc />
+    <AnimatePresence mode="wait">
+      {!isEntered ? (
+        <motion.main
+          key="landing"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, scale: 1.05 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="relative w-full h-screen min-h-[850px] bg-[#000B1A] overflow-hidden select-none"
+        >
+          {/* 1. Background Arc (Locked and sticky, never zooms out of place) */}
+          <HeroArc />
 
-      {/* 2. Top Navigation Bar */}
-      <Navbar content={content} />
+          {/* 2. Top Navigation Bar (Translucent purple pill shape with glassmorphism) */}
+          <Navbar content={content} />
 
-      {/* 3. Central Canvas: Giant Brandmark + Tagline & CTA */}
-      <div className="relative z-10 w-full flex-1 flex flex-col justify-center items-center pt-28 pb-16 sm:pt-36 sm:pb-20 md:pt-40 md:pb-24 px-4">
-        {/* Giant NIIOMA Typography across the horizontal center */}
-        <div className="w-full flex justify-center items-center my-auto py-8 sm:py-12 md:py-16">
-          <NiiomaWordmark />
-        </div>
+          {/* 3. Center Branding: Large 'NIIOMA' Text (Locked right on the sticky arc) */}
+          <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(100vw,1760px)] px-4 sm:px-8 z-20 pointer-events-none flex justify-center items-center">
+            <NiiomaWordmark />
+          </div>
 
-        {/* Headline and Action Button */}
-        <div className="w-full flex justify-center items-center mt-4 sm:mt-8 md:mt-12">
-          <HeroContent content={content} />
-        </div>
-      </div>
-    </main>
+          {/* 4. Hero Content: Subtitle & CTA Button */}
+          <div className="fixed left-1/2 -translate-x-1/2 top-[calc(50%+130px)] sm:top-[calc(50%+150px)] md:top-[calc(50%+177px)] z-30 w-full max-w-[720px] px-4 flex justify-center">
+            <HeroContent
+              content={content}
+              onEnter={() => setIsEntered(true)}
+            />
+          </div>
+        </motion.main>
+      ) : (
+        <motion.div
+          key="horizontal-experience"
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full h-screen overflow-hidden"
+        >
+          <HorizontalExperience onBackToLanding={() => setIsEntered(false)} />
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
