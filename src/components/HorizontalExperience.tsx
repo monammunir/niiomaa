@@ -73,15 +73,15 @@ export const HorizontalExperience: React.FC<HorizontalExperienceProps> = ({
   return (
     <div className="relative w-full h-screen bg-[#000B1A] overflow-hidden select-none flex flex-col justify-between">
       {/* 1. Global Fixed Floating Navbar (Matching media_1789642141436.png) */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex justify-center items-center px-4 sm:px-6 pt-4 sm:pt-6 pointer-events-none">
+      <header className="fixed top-0 left-0 right-0 z-50 flex justify-center items-center px-4 sm:px-6 pt-3 sm:pt-4 pointer-events-none">
         <nav
-          className="pointer-events-auto w-full max-w-[1432px] h-[72px] sm:h-[80px] rounded-[100px] px-6 sm:px-10 flex items-center justify-between border border-white/[0.12] transition-all"
+          className="pointer-events-auto w-full max-w-[1240px] h-[54px] sm:h-[62px] rounded-[100px] px-4 sm:px-8 flex items-center justify-between border border-white/[0.12] transition-all"
           style={{
             background: "rgba(112, 47, 160, 0.35)",
             backdropFilter: "blur(16px)",
             WebkitBackdropFilter: "blur(16px)",
             boxShadow:
-              "0 8px 32px rgba(112, 47, 160, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.08)",
+              "0 6px 24px rgba(112, 47, 160, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.08)",
           }}
         >
           {/* Brand Logo - Click returns to landing */}

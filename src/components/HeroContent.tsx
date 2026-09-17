@@ -29,26 +29,26 @@ export const HeroContent: React.FC<HeroContentProps> = ({ content, onEnter }) =>
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-      className="flex flex-col items-center justify-center text-center max-w-[698px] mx-auto px-4 z-10 gap-5 sm:gap-7 md:gap-9"
+      className="flex flex-col items-center justify-center text-center max-w-[540px] mx-auto px-4 z-10 gap-3.5 sm:gap-5"
     >
-      {/* Main Headline (51px Rethink Sans) */}
-      <h1 className="text-white font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-[46px] xl:text-[51px] leading-[1.15] sm:leading-[1.1] md:leading-[105%] tracking-tight select-none">
+      {/* Main Headline */}
+      <h1 className="text-white font-medium sm:font-semibold text-lg sm:text-2xl md:text-[28px] lg:text-[34px] leading-[1.2] tracking-tight select-none">
         <span className="block">{content.hero.headline.line1}</span>
-        <span className="block mt-1">{content.hero.headline.line2}</span>
+        <span className="block mt-0.5">{content.hero.headline.line2}</span>
       </h1>
 
       {/* Action Button: Enter Website */}
       <motion.button
         whileHover={{
-          scale: 1.05,
-          boxShadow: "0 0 25px rgba(112, 47, 160, 0.6)",
+          scale: 1.04,
+          boxShadow: "0 0 20px rgba(112, 47, 160, 0.55)",
         }}
         whileTap={{ scale: 0.96 }}
         onClick={handleClick}
-        className="relative group flex items-center justify-center h-[48px] px-6 rounded-[45px] text-base font-semibold text-white transition-all duration-300 select-none overflow-hidden"
+        className="relative group flex items-center justify-center h-[38px] sm:h-[42px] px-5 sm:px-6 rounded-[45px] text-[13px] sm:text-[14px] font-semibold text-white transition-all duration-300 select-none overflow-hidden shadow-sm"
         style={{
           background: "#702FA0",
-          border: "1px solid rgba(255, 255, 255, 0.1)",
+          border: "1px solid rgba(255, 255, 255, 0.12)",
           backdropFilter: "blur(2px)",
           WebkitBackdropFilter: "blur(2px)",
         }}

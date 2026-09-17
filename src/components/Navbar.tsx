@@ -28,14 +28,14 @@ export const Navbar: React.FC<NavbarProps> = ({ content, onEnterWebsite }) => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-40 flex justify-center items-center px-4 sm:px-6 pt-4 sm:pt-6 pointer-events-none">
+      <header className="fixed top-0 left-0 right-0 z-40 flex justify-center items-center px-4 sm:px-6 pt-3 sm:pt-4 pointer-events-none">
         <nav
-          className="pointer-events-auto w-full max-w-[1432px] h-[72px] sm:h-[80px] rounded-[100px] px-6 sm:px-12 flex items-center justify-between border-2 border-white/[0.12] transition-all"
+          className="pointer-events-auto w-full max-w-[1240px] h-[54px] sm:h-[62px] rounded-[100px] px-4 sm:px-8 flex items-center justify-between border border-white/[0.14] transition-all"
           style={{
-            background: "rgba(149, 8, 188, 0.45)",
+            background: "rgba(149, 8, 188, 0.40)",
             backdropFilter: "blur(16px)",
             WebkitBackdropFilter: "blur(16px)",
-            boxShadow: "0 8px 32px rgba(112, 47, 160, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.08)",
+            boxShadow: "0 6px 24px rgba(112, 47, 160, 0.30), inset 0 0 0 1px rgba(255, 255, 255, 0.08)",
           }}
         >
           {/* 1. Left Logo */}
@@ -44,7 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({ content, onEnterWebsite }) => {
           </div>
 
           {/* 2. Center Nav Items (Desktop) */}
-          <div className="hidden xl:flex items-center gap-2">
+          <div className="hidden xl:flex items-center gap-1.5">
             {content.navigation.items.map((item, idx) => {
               const isItemActive = item.isActive;
               const isMenuOpen = activeDropdown === idx;
@@ -57,16 +57,16 @@ export const Navbar: React.FC<NavbarProps> = ({ content, onEnterWebsite }) => {
                         toggleDropdown(idx);
                       }
                     }}
-                    className={`flex items-center gap-2 h-[48px] px-4 rounded-[48px] text-[16px] font-semibold transition-all select-none ${
+                    className={`flex items-center gap-1.5 h-[38px] px-3.5 rounded-[38px] text-[13.5px] font-medium transition-all select-none ${
                       isItemActive
                         ? "bg-[#702FA0]/40 text-white border border-white/10 backdrop-blur-[2px] shadow-sm"
-                        : "text-white/90 hover:text-white hover:bg-white/10"
+                        : "text-white/85 hover:text-white hover:bg-white/10"
                     }`}
                   >
                     <span>{item.label}</span>
                     {item.hasDropdown && (
                       <ChevronDown
-                        className={`w-4 h-4 transition-transform duration-200 opacity-80 ${
+                        className={`w-3.5 h-3.5 transition-transform duration-200 opacity-80 ${
                           isMenuOpen ? "rotate-180" : ""
                         }`}
                       />
@@ -88,11 +88,11 @@ export const Navbar: React.FC<NavbarProps> = ({ content, onEnterWebsite }) => {
           </div>
 
           {/* 3. Right Action Items */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             {/* Sign In Button */}
             <button
               onClick={() => setIsSignInOpen(true)}
-              className="h-[48px] w-[96px] flex items-center justify-center rounded-[48px] text-[16px] font-semibold text-white border border-white/15 bg-[rgba(112,47,160,0.15)] hover:bg-[rgba(112,47,160,0.35)] backdrop-blur-[2px] transition-all select-none shadow-sm"
+              className="h-[38px] px-4 flex items-center justify-center rounded-[38px] text-[13.5px] font-medium text-white border border-white/15 bg-[rgba(112,47,160,0.15)] hover:bg-[rgba(112,47,160,0.35)] backdrop-blur-[2px] transition-all select-none shadow-sm"
             >
               {content.navigation.signIn.label}
             </button>
@@ -101,9 +101,9 @@ export const Navbar: React.FC<NavbarProps> = ({ content, onEnterWebsite }) => {
             <div className="relative hidden md:block">
               <button
                 onClick={() => setIsLangOpen(!isLangOpen)}
-                className="flex items-center gap-2 h-[40px] px-3.5 rounded-[8px] text-[14px] font-semibold text-white hover:bg-white/10 backdrop-blur-[2px] transition select-none"
+                className="flex items-center gap-1.5 h-[36px] px-3 rounded-[8px] text-[13px] font-medium text-white/90 hover:text-white hover:bg-white/10 backdrop-blur-[2px] transition select-none"
               >
-                <Globe className="w-4 h-4 text-white/90" />
+                <Globe className="w-3.5 h-3.5 text-white/80" />
                 <span>{selectedLang}</span>
               </button>
 

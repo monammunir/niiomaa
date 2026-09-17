@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="en" className="dark scroll-smooth">
       <head>
         <link rel="preload" href="/earth.glb" as="fetch" crossOrigin="anonymous" />
-        <link rel="preload" href="/hero_bg.png" as="image" />
+        <link rel="preload" href="/hero_bg.webp" as="image" type="image/webp" />
       </head>
       <body className="antialiased bg-[#00142C] text-white min-h-screen selection:bg-[#702FA0] selection:text-white">
         {children}

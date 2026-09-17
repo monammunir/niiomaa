@@ -13,7 +13,7 @@ export const NavbarLogo: React.FC<NavbarLogoProps> = ({ className = "" }) => {
         viewBox="0 0 141 30"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-[141px] sm:w-[170px] md:w-[185px] h-auto transition-transform duration-300 group-hover:scale-105"
+        className="w-[115px] sm:w-[130px] md:w-[145px] h-auto transition-transform duration-300 group-hover:scale-105"
       >
         <g id="NIIOMA Logo">
           <g id="NIIOMA Logo_2">

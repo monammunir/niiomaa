@@ -36,13 +36,13 @@ export default function Home() {
           {/* 2. Top Navigation Bar (Translucent purple pill shape with glassmorphism) */}
           <Navbar content={content} />
 
-          {/* 3. Center Branding: Large 'NIIOMA' Text (Locked right on the sticky arc across all zoom levels) */}
-          <div className="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2 w-[min(94vw,185vh)] px-2 sm:px-4 z-20 pointer-events-none flex justify-center items-center">
+          {/* 3. Center Branding: Large 'NIIOMA' Text (Sleek, refined proportion) */}
+          <div className="absolute left-1/2 top-[49%] -translate-x-1/2 -translate-y-1/2 w-[min(78vw,1060px)] px-3 sm:px-6 z-20 pointer-events-none flex justify-center items-center">
             <NiiomaWordmark />
           </div>
 
-          {/* 4. Hero Content: Subtitle & CTA Button (Positioned proportionally below NIIOMA) */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-[calc(52%+max(3vw,28px)+16px)] sm:top-[calc(52%+max(3vw,28px)+24px)] z-30 w-full max-w-[min(90vw,720px)] px-4 flex justify-center">
+          {/* 4. Hero Content: Subtitle & CTA Button (Balanced positioning with ample breathing room) */}
+          <div className="absolute left-1/2 -translate-x-1/2 top-[calc(49%+max(2.5vw,20px)+18px)] sm:top-[calc(49%+max(2vw,20px)+26px)] z-30 w-full max-w-[min(90vw,560px)] px-4 flex justify-center">
             <HeroContent
               content={content}
               onEnter={() => setIsEntered(true)}
