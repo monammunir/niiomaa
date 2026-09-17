@@ -28,7 +28,7 @@ export default function Home() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.05 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full h-screen min-h-[850px] bg-[#000B1A] overflow-hidden select-none"
+          className="relative w-full h-screen h-[100dvh] bg-[#000B1A] overflow-hidden select-none"
         >
           {/* 1. Background Arc (Locked and sticky, never zooms out of place) */}
           <HeroArc />
@@ -36,13 +36,13 @@ export default function Home() {
           {/* 2. Top Navigation Bar (Translucent purple pill shape with glassmorphism) */}
           <Navbar content={content} />
 
-          {/* 3. Center Branding: Large 'NIIOMA' Text (Locked right on the sticky arc) */}
-          <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(100vw,1760px)] px-4 sm:px-8 z-20 pointer-events-none flex justify-center items-center">
+          {/* 3. Center Branding: Large 'NIIOMA' Text (Locked right on the sticky arc across all zoom levels) */}
+          <div className="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2 w-[min(94vw,185vh)] px-2 sm:px-4 z-20 pointer-events-none flex justify-center items-center">
             <NiiomaWordmark />
           </div>
 
-          {/* 4. Hero Content: Subtitle & CTA Button */}
-          <div className="fixed left-1/2 -translate-x-1/2 top-[calc(50%+130px)] sm:top-[calc(50%+150px)] md:top-[calc(50%+177px)] z-30 w-full max-w-[720px] px-4 flex justify-center">
+          {/* 4. Hero Content: Subtitle & CTA Button (Positioned proportionally below NIIOMA) */}
+          <div className="absolute left-1/2 -translate-x-1/2 top-[calc(52%+max(3vw,28px)+16px)] sm:top-[calc(52%+max(3vw,28px)+24px)] z-30 w-full max-w-[min(90vw,720px)] px-4 flex justify-center">
             <HeroContent
               content={content}
               onEnter={() => setIsEntered(true)}

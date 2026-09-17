@@ -29,11 +29,10 @@ export const HeroContent: React.FC<HeroContentProps> = ({ content, onEnter }) =>
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-      className="flex flex-col items-center justify-center text-center max-w-[698px] mx-auto px-4 z-10"
-      style={{ gap: "48px" }}
+      className="flex flex-col items-center justify-center text-center max-w-[698px] mx-auto px-4 z-10 gap-5 sm:gap-7 md:gap-9"
     >
       {/* Main Headline (51px Rethink Sans) */}
-      <h1 className="text-white font-semibold text-3xl sm:text-4xl md:text-[51px] leading-[1.1] sm:leading-[1.05] md:leading-[100%] tracking-tight select-none">
+      <h1 className="text-white font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-[46px] xl:text-[51px] leading-[1.15] sm:leading-[1.1] md:leading-[105%] tracking-tight select-none">
         <span className="block">{content.hero.headline.line1}</span>
         <span className="block mt-1">{content.hero.headline.line2}</span>
       </h1>
